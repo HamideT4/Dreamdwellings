@@ -7,5 +7,3 @@ import "controllers"
 //= require bootstrap.bundle
 //= require popper
 //= require bootstrap-sprockets
-//= require_tree .
-
