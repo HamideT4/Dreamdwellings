@@ -1,0 +1,32 @@
+<h1 class="h3">Properties</h1>
+<div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Categorie</th>
+              <th scope="col">Status</th>
+              <th scope="col">Description</th>
+              <th scope="col">Price</th>
+              <th scope="col">Localisation</th>
+              <th colspan = "3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @properties.each do |property| %>
+            <tr>
+              <td><%= property.title %></td>
+              <td><%= property.categorie %></td>
+              <td><%= property.status %></td>
+              <td><%= property.description %></td>
+              <td><%= property.price %></td>
+              <td><%= property.localisation %></td>
+              <td><%= link_to "Show", property %></td>
+              <td><%= link_to "Edit", edit_property_path(property) %></td>
+              <td><%= button_to "Destroy", property, method: :delete, data: { confirm: 'Are you sure'} %></td>
+            </tr>
+             <% end %>
+          </tbody>
+        </table>
+      </div>

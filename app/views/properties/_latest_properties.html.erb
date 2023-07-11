@@ -1,0 +1,7 @@
+<% @properties.each do |property| %>
+    <div class="col-md-3">
+    <%= link_to(image_tag(property.photo_url), property_path(property)) if property.photo? %>
+    <h3 class="h5 mt-3"><%= property.title %></h3>
+    <p><i data-feather="map-pin"></i> <%= property.localisation %></p>
+    </div>
+<% end %>
