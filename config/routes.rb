@@ -4,8 +4,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   get "/account" => 'account#index', as: :account
-  get 'account/properties'
-  get 'account/reports'
+  #get 'account/properties'
+  #get 'account/reports'
+  
   resources :properties
   devise_for :agencies
   root to: 'public#main'

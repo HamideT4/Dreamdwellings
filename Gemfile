@@ -84,3 +84,7 @@ gem "fog", '~> 1.37.0'
 gem "figaro"
 
 gem "mini_magick"
+
+gem 'simple_form'
+
+gem 'sass-rails'

@@ -1,67 +1,16 @@
-<%= form_with(model: property) do |form| %>
-  <% if property.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+<br/>
+<%= simple_form_for property, html: {class: 'form-horizontal'} do |f|%>
 
-      <ul>
-        <% property.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+   <%= f.input :title, label:'Ajouter un titre à votre annonce' %>
+   <%= f.input :categorie, label:'Quel  la catégorie' %>
+   <%= f.input :status, label: 'Donner un statut à votre annonce' %>
+   <%= f.input :description, as: :text %>
+   <%= f.input :price %>
+   <%= f.input :rooms, label:'Quel est le nombre de chambre ' %>
+   <%= f.input :bathrooms, label:'Quel est le nombre de toilettes ' %>
+   <%= f.input :chicken, label:'Quel le nombre de cuisine ' %>
+   <%= f.input :localisation %>
+   <%= f.input :photo, as: :file %>
+   <%= f.button :submit, class: 'btn-primary' %>
 
-  <div class="form-group">
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :categorie, style: "display: block" %>
-    <%= form.text_field :categorie, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :price, style: "display: block" %>
-    <%= form.number_field :price, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :localisation, style: "display: block" %>
-    <%= form.text_field :localisation, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-
-  <p>
-    <%= form.label :photo, style: "display: block" %>
-    <%= form.file_field :photo %> <br/>
-    <%= image_tag(@property.photo_url) if @property.photo? %>
-    <%#= form.hidden_field :photo_cache %>
-  </p>
-
-   <%# if @property.photo? 
-      <p>
-      <%= image_tag @property.photo_url(:thumb) 
-      </p>
-  <% end 
-
-    <%= form.label :photo, class: "form-control" 
-    <%= form.file_field :photo%> 
-  </div>
-  <br/>
-
-  <div class="form-group">
-    <%= form.submit "Save Property", class: "btn btn-lg btn-block btn-success" %>
-  </div>
 <% end %>

@@ -7,3 +7,5 @@ import "controllers"
 //= require bootstrap.bundle
 //= require popper
 //= require bootstrap-sprockets
+
+require("./Includes/properties");

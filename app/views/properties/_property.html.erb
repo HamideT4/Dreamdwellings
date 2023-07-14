@@ -22,9 +22,9 @@
               <td><%= property.description %></td>
               <td><%= property.price %></td>
               <td><%= property.localisation %></td>
-              <td><%= link_to "Show", property %></td>
-              <td><%= link_to "Edit", edit_property_path(property) %></td>
-              <td><%= button_to "Destroy", property, method: :delete, data: { confirm: 'Are you sure'} %></td>
+              <td><%= link_to "Détails", property %></td>
+              <td><%= link_to "Modifier", edit_property_path(property) %></td>
+              <td><%= button_to "Supprimer", property, method: :delete, data: { confirm: 'Are you sure'} %></td>
             </tr>
              <% end %>
           </tbody>

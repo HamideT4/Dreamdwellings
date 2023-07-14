@@ -1,33 +1,71 @@
-<p id="notice"><%= notice %></p>
+<div class="property-main-photo" style="background-image:url('<%=@property.photo.url %>')">
+<style>
+            .property-main-photo{
+              height: 500px;
+              background-size: cover;
+              margin-bottom: 40px;
+            }
+            </style>
 
-<p>
-  <strong>Title:</strong>
-  <%= @property.title %>
-</p>
+<%#= debug @property.photo.url%>
+  <div class="photo-overlay">
+  
+  </div>
+</div>
 
-<p>
-  <strong>Categorie:</strong>
-  <%= @property.categorie %>
-</p>
+<div class="container">
+  <div class="row">
+   <div class="col-8">
+    <div class="row">
+      <div class="col-6">
+        <p class="h2"><%= @property.price > 0 ? number_to_currency(@property.price, unit: 'F cfa', format: "%n %u", precision: 0) : "@property.status" %></p>
+        <p class="mb-0"> Quartier : <%= @property.localisation %></p>
+      </div>
+      <div class="col-6 text-center">
+        <div class="row me-3 bg-light p-3">
+          <div class="col-4">
+            <p class="m-0"><strong> chambre </strong></p>
+            <span class="lead"><%= @property.rooms %></span>
+          </div>
+          <div class="col-4">
+            <p class="m-0"><strong> Toilettes</strong></p>
+            <span class="lead"><%= @property.bathrooms %></span>
+          </div>
+          <div class="col-4">
+            <p class="m-0"><strong> Cuisine </strong></p>
+            <span class="lead"><%= @property.chicken %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row border-top border-bottom mt-5 mb-4 pt-4 pb-4">
+    <div class="col-6">
+      <strong class="text-primary"> <%= @property.categorie %> </strong>
+    </div>
+    <div class="col-6 text-end">
+      <strong class="text-primary"> <%= @property.status %> </strong>       
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="h4"> Description de l'annonce </p>
+        <p class="text-primary"><%= @property.title %></p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @property.status %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @property.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @property.price %>
-</p>
-
-<p>
-  <strong>Localisation:</strong>
-  <%= @property.localisation %>
-</p>
-
-<%= link_to 'Back', properties_path %>
+          <div id="prop-details">
+            <style>
+            #prop-details{
+              height: 150px;
+              overflow: hidden;
+            }
+            </style>
+            <%= simple_format @property.description%>
+          </div>
+          <button class="btn btn-outline-primary mt-3"> Voir plus</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <%= render "properties/agency_details" %>
+  </div>
+</div>
+</div>

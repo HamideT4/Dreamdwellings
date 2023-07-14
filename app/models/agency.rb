@@ -4,5 +4,11 @@ class Agency < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-         has_many :properties
+  has_many :properties
+
+  def name
+
+    "Hamster company"
+
+  end
 end
