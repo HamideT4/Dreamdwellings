@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
   }
+
   get "/account" => 'account#index', as: :account
+  get "/profile/:id" => 'account#profile', as: :profile
   #get 'account/properties'
   #get 'account/reports'
   

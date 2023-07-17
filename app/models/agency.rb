@@ -4,11 +4,8 @@ class Agency < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  mount_uploader :logo, ProfilePictureUploader
+
   has_many :properties
 
-  def name
-
-    "Hamster company"
-
-  end
 end

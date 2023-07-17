@@ -1,38 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-primary fixed-top bg-primary sticky-top">
-  <div class="container">
-  <a class="navbar-brand" href="<%= agency_signed_in? ? account_path: root_path %>">DreamDwellings</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-          <% if agency_signed_in? %>
-          <%= link_to "Account", account_path, class: "nav-link" %>
-          <% else%>
-            <a class="nav-link" href="/">Home</a>
-          <% end %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Agencies</a>
-          </li>
-        </ul>
-
-      <% if agency_signed_in? %>
-        <%= form_tag destroy_agency_session_path, method: :delete do %>
-        <%= submit_tag 'Sign out'%> 
-      <% end %>        
-
-      <% else %>
-          <%= link_to "Log in", new_agency_session_path, class: "btn btn-secondary mr-2 float-sm-right" %>
-          <%= link_to "Sign up", new_agency_registration_path, class: "btn btn-success float-sm-right" %>
-      <% end %>
-    </div>
-  </div>
-</nav>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-primary p-3 ">
     <div class="container-fluid">
     <a class="navbar-brand" href="<%= agency_signed_in? ? account_path: root_path %>">DreamDwellings</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,19 +18,29 @@
             <a class="nav-link mx-2" href="#">Toutes nos agences</a>
           </li>
           <li class="nav-item dropdown">
+          <% if user_signed_in? %>
             <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Votre profile
+              <%= current_user.email %>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">Blog</a></li>
-              <li><a class="dropdown-item" href="#">About Us</a></li>
-              <li><a class="dropdown-item" href="#">Contact us</a></li>
+              <li class="dropdown-item">
+              <%= form_tag destroy_user_session_path, method: :delete, class:'logout-form' do %>
+              <%= submit_tag 'Sign out'%> 
+              <% end %>
+            </li>
+          </ul>
+              <% else %>
+            <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Profile
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li class="dropdown-item"><%= link_to "Sign Up", new_user_registration_path %></li>
+              <li class="dropdown-item"><%= link_to "Sign In", new_user_session_path %></li>
+              <% end %>
             </ul>
-          </li>
-        </ul>
       </div>
     </div>
-    </nav>
+  </nav>
 
 
 <%#nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">

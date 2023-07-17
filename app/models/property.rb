@@ -4,7 +4,7 @@ class Property < ApplicationRecord
 
     belongs_to :agency
 
-    validates :title, :categorie, :status, :description, :price, :localisation,  presence: true
+    validates :title, :categorie, :description, :price, :localisation,  presence: true
 
     validates :price, numericality: { greater_than: 0 }
 

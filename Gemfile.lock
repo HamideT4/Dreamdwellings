@@ -234,6 +234,8 @@ GEM
     fog-xml (0.1.4)
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
+    font-awesome-sass (6.4.0)
+      sassc (~> 2.0)
     formatador (0.3.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -382,6 +384,8 @@ GEM
     thor (1.2.2)
     tilt (2.2.0)
     timeout (0.4.0)
+    toastr-rails (1.0.3)
+      railties (>= 3.1.0)
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -427,6 +431,7 @@ DEPENDENCIES
   devise (~> 4.9)
   figaro
   fog (~> 1.37.0)
+  font-awesome-sass (~> 6.4.0)
   importmap-rails
   jbuilder
   jquery-rails
@@ -439,6 +444,7 @@ DEPENDENCIES
   simple_form
   sprockets-rails
   stimulus-rails
+  toastr-rails
   turbo-rails
   tzinfo-data
   web-console

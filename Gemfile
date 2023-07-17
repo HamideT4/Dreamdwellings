@@ -88,3 +88,11 @@ gem "mini_magick"
 gem 'simple_form'
 
 gem 'sass-rails'
+
+gem "font-awesome-sass", "~> 6.4.0"
+
+# Gemfile
+
+gem 'toastr-rails'
+
+#gem "tailwindcss-rails", "~> 2.0"

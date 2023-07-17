@@ -8,3 +8,38 @@
     <% end %>    </li>
   </ul>
 </nav>
+
+
+<%#nav class="navbar navbar-expand-md navbar-primary fixed-top bg-primary sticky-top">
+  <div class="container">
+  <a class="navbar-brand" href="<%= agency_signed_in? ? account_path: root_path >">DreamDwellings</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+          <% if agency_signed_in? 
+          <%= link_to "Account", account_path, class: "nav-link" 
+          <% else
+            <a class="nav-link" href="/">Home</a>
+          <% end 
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Agencies</a>
+          </li>
+        </ul>
+
+      <% if agency_signed_in? 
+        <%= form_tag destroy_agency_session_path, method: :delete do 
+        <%= submit_tag 'Sign out'
+      <% end 
+
+      <% else 
+          <%= link_to "Log in", new_agency_session_path, class: "btn btn-secondary mr-2 float-sm-right" 
+          <%= link_to "Sign up", new_agency_registration_path, class: "btn btn-success float-sm-right" %
+      <% end 
+    </div>
+  </div>
+</nav%>

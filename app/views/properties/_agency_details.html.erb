@@ -1,6 +1,20 @@
-<div class="">
-    <h3 class="h4"><%= @agency.name %></h3>
+<div class="text-center border p-4 pb-4 ml-lg-4">
+    <div class="mb-2">
+        <%= image_tag(@agency.logo.url, class: "profile-pic img-cirle",  style: "width: 100px; height: 100px; border-radius: 50%;") %>
+    </div>
+    <h3 class="h4 m-0"><%= @agency.name %></h3>
 
-    <button class="btn btn-secondary text-uppercase">Contact </button>
-    <button class="btn btn-primary text-uppercase ">Email</button>
+    <button class="btn btn-block btn-info text-uppercase w-100 mb-4" id="show-tel" onclick="showPhoneNumber()"> Téléphone</button>
+    <span id="phoneNumber" style="display: none;"> <%= @agency.phone %> </span>
+
+    <script>
+        function showPhoneNumber() {
+    var phoneNumber = "<%= @agency.phone %>"; // Remplacez cela par votre numéro de téléphone réel
+    var callButton = document.getElementById("show-tel");
+    callButton.innerText = phoneNumber;
+    }
+    </script>
+
+    <%= link_to "Profile", profile_path(@agency.id), class: "btn btn-secondary text-uppercase "%>
+    <button class="btn btn-success text-uppercase " data-bs-toggle="modal" data-bs-target="#exampleModal" >Email</button>
 </div>

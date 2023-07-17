@@ -3,7 +3,8 @@
 
    <%= f.input :title, label:'Ajouter un titre à votre annonce' %>
    <%= f.input :categorie, label:'Quel  la catégorie' %>
-   <%= f.input :status, label: 'Donner un statut à votre annonce' %>
+   <%= f.input :for_sale, as: :select, collection: [['En vente', true], ['En location', false]], include_blank: false %>
+   <%= f.input :available_date, as: :datetime %>
    <%= f.input :description, as: :text %>
    <%= f.input :price %>
    <%= f.input :rooms, label:'Quel est le nombre de chambre ' %>

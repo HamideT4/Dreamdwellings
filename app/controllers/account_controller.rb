@@ -4,6 +4,10 @@ class AccountController < ApplicationController
   def index
   end
 
+  def profile
+    @agency = Agency.find(params[:id])
+  end
+
   private
 
   def set_sidebar

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_14_035634) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_15_070949) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_035634) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "website"
     t.index ["email"], name: "index_agencies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_agencies_on_reset_password_token", unique: true
   end
@@ -49,6 +50,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_035634) do
     t.integer "bathrooms", default: 0
     t.integer "rooms", default: 0
     t.integer "chicken", default: 0
+    t.boolean "for_sale"
+    t.datetime "available_date"
     t.index ["agency_id"], name: "index_properties_on_agency_id"
   end
 

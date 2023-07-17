@@ -3,16 +3,26 @@
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
-      <h1 class="display-3">Hello, world!</h1>
-      <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
-    </div>
+        <div class="property border mb-3">
+        <style>
+            .property-thumb{
+              height: 170px;
+              background-repeat: no-repeat;
+              background-position: center center;
+              background-size: cover;
+            }
+        </style>
+      <h1 class="h1 text-center"> Trouver votre nouveau logement </h1>
+      <p class="text-center">Cliquer sur un image pour selection votre logement</p>
+      <%= link_to "Connecter vous à votre compte d'agence", new_agency_session_path, class: "btn btn-primary mr-2 mb-4 float-sm-right" %>
+      <%= link_to "Inscriver votre agence", new_agency_registration_path, class: "btn btn-primary float-sm-right mb-4" %>
+
   </div>
 
   <section id="latest-properties" class="mb-5">
     <div class="container">
       <div class="row">
-    <%= render "properties/latest_properties"%>
+    <%= render "properties/list", properties: @properties %>
       </div>
     </div>
   </section>

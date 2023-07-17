@@ -4,6 +4,7 @@
               height: 500px;
               background-size: cover;
               margin-bottom: 40px;
+              background-position-y: center
             }
             </style>
 
@@ -18,13 +19,19 @@
    <div class="col-8">
     <div class="row">
       <div class="col-6">
-        <p class="h2"><%= @property.price > 0 ? number_to_currency(@property.price, unit: 'F cfa', format: "%n %u", precision: 0) : "@property.status" %></p>
+      <p class="h4 mb-0"><%= @property.for_sale? ? "En vente" : "En location" %>
+      <% if @property.for_sale? %>
+        <p class="h2"><%= @property.price > 0 ? number_to_currency(@property.price, unit: 'F cfa', format: "%n %u", precision: 0) : "En vente" %></p>
+      <% else %>
+        <p class="h2"><%= @property.price > 0 ? number_to_currency(@property.price, unit: 'F cfa', format: "%n %u", precision: 0) : "En location" %> /mois</p>
+      <% end %>
         <p class="mb-0"> Quartier : <%= @property.localisation %></p>
       </div>
       <div class="col-6 text-center">
         <div class="row me-3 bg-light p-3">
           <div class="col-4">
             <p class="m-0"><strong> chambre </strong></p>
+            <i class="fa-solid fa-user-secret"></i>
             <span class="lead"><%= @property.rooms %></span>
           </div>
           <div class="col-4">
@@ -43,7 +50,7 @@
       <strong class="text-primary"> <%= @property.categorie %> </strong>
     </div>
     <div class="col-6 text-end">
-      <strong class="text-primary"> <%= @property.status %> </strong>       
+      <strong class="text-primary">  </strong> 
     </div>
   </div>
   <div class="row">
@@ -52,15 +59,8 @@
         <p class="text-primary"><%= @property.title %></p>
 
           <div id="prop-details">
-            <style>
-            #prop-details{
-              height: 150px;
-              overflow: hidden;
-            }
-            </style>
             <%= simple_format @property.description%>
           </div>
-          <button class="btn btn-outline-primary mt-3"> Voir plus</button>
       </div>
     </div>
   </div>
@@ -69,3 +69,61 @@
   </div>
 </div>
 </div>
+
+<section class="mt-5 mb-5">
+    <div class="container">
+      <div class="row">
+      <div class="col-12">
+      <p class="h3 mb-3"> Autres annonces du même auteur </p>
+      </div>
+      <%= render "properties/list", properties: @agency_properties%>
+      </div>
+    </div>
+</section>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const exampleModal = document.getElementById('exampleModal')
+  exampleModal.addEventListener('show.bs.modal', event => {
+    // Button that triggered the modal
+    const button = event.relatedTarget
+    // Extract info from data-bs-* attributes
+    const recipient = button.getAttribute('data-bs-whatever')
+    // If necessary, you could initiate an AJAX request here
+    // and then do the updating in a callback.
+    //
+    // Update the modal's content.
+    const modalTitle = exampleModal.querySelector('.modal-title')
+    const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+    modalTitle.textContent = `New message to ${recipient}`
+    modalBodyInput.value = recipient
+  })
+</script>
