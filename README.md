@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is for an real estate website. Agencies can add ads to their page
+and individuals can directly contact them about their properties.
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+* Ruby 3.1.1
 
-* System dependencies
+* Rails 7.0.6
 
-* Configuration
+## Get and run the project localy
 
-* Database creation
+* Download the project (HTTP or SSH) :
+  * Using HTTP : ```git clone https://github.com/HamideT4/Dreamdwellings.git``
+  * Using SSH : ```git clone git@github.com:HamideT4/Dreamdwellings.git```
 
-* Database initialization
+* Navigate to the root directory : ```cd Dreamdwellings```
 
-* How to run the test suite
+* Install dependencies (gems) : ```bundle install```
 
-* Services (job queues, cache servers, search engines, etc.)
+* Create the database : ```rails db:create``` or ```rake db:create```
 
-* Deployment instructions
+* Checkout the migrations status (up/down) : ```rails db:migrate:status```
 
-* ...
+* Make the migrations : ```rails db:migrate```
+
+* Checkout again the migration status (up/down) : ```rails db:migrate:status```
+
+* Run the server : ```rails server``` or ```rails s``` (or ```rs``` if alias rs is created)
+
+* Open [http://127.0.0.1:3000](http://127.0.0.1:3000) or [http://[::1]:3000](http://[::1]:3000) in the broswer
+
